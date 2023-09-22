@@ -14,9 +14,12 @@ function Home() {
     const [hasMore, setHasMore] = useState(true);
 
     useEffect(() => {
+
+        // Function to fetch data from the API
         const fetchData = async () => {
             try {
 
+                // Simulate fetching data after 1 second
                 await new Promise((resolve) => setTimeout(resolve, 2000));
 
                 const response = await axios.get(
@@ -26,8 +29,12 @@ function Home() {
                 const newItems = response.data;
 
                 if (newItems.length === 0) {
+
+                    // If there are no more items to load, set hasMore to false
                     setHasMore(false);
                 } else {
+
+                    // Append new items to the existing items
                     setItems([...items, ...newItems]);
                     setCurrentPage(currentPage + 1);
                 }
@@ -36,11 +43,12 @@ function Home() {
             }
         };
 
+        // Fetch initial data when the component mounts
         fetchData();
     }, [currentPage, items]);
 
     const fetchMoreData = () => {
-
+        // The useEffect above will take care of fetching more data when this function is called.
     };
     return (
         <Box>
@@ -50,7 +58,7 @@ function Home() {
                 dataLength={items.length}
                 next={fetchMoreData}
                 hasMore={hasMore}
-                loader={<Spinner speed="1s" color='blue.500' emptyColor='gray.200'/>}
+                loader={<Spinner speed="1s" color='blue.500' emptyColor='gray.200' />}
                 scrollThreshold={0.9}
 
             >
