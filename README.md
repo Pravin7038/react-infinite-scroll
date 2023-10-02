@@ -1,4 +1,4 @@
-# Project : react-infinite-scroll
+# Project Name : react-infinite-scroll
 **************************************************************************
 
 ####   PLEASE RUN THE SERVER BEFORE OPENING THE WEBSITE ON BROWSER  ####
